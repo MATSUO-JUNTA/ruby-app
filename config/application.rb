@@ -11,12 +11,17 @@ module SampleApp
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 7.0
 
-    # Configuration for the application, engines, and railties goes here.
-    #
-    # These settings can be overridden in specific environments using the files
-    # in config/environments, which are processed later.
-    #
-    # config.time_zone = "Central Time (US & Canada)"
-    # config.eager_load_paths << Rails.root.join("extras")
+    config.generator do |g|
+      g.assets false # CSS,Javascriptの生成を無効にする
+      g.helper false # helperファイルの生成を無効にする
+      g.test_framework :rspec,
+        fixtures:false, # フィクスチャファイルの生成を無効にする
+        view_spaces: false, # viewファイルの生成を無効にする
+        helper_specs: false, # helperファイルの生成を無効にする
+        routing_specs: false, # ルーティングファイルの生成を無効にする
+        controller_specs: false, # コントローラーファイルの生成を無効にする
+        request_specs: false # コントローラーファイルの生成を無効にする
+    end
+
   end
 end
