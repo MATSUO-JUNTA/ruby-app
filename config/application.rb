@@ -10,7 +10,6 @@ module SampleApp
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 7.0
-
     config.generator do |g|
       g.assets false # CSS,Javascriptの生成を無効にする
       g.helper false # helperファイルの生成を無効にする
@@ -22,6 +21,5 @@ module SampleApp
         controller_specs: false, # コントローラーファイルの生成を無効にする
         request_specs: false # コントローラーファイルの生成を無効にする
     end
-
   end
 end
