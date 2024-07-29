@@ -10,7 +10,7 @@ module SampleApp
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 7.0
-    config.generator do |g|
+    config.generators do |g|
       g.assets false # CSS,Javascriptの生成を無効にする
       g.helper false # helperファイルの生成を無効にする
       g.test_framework :rspec,
