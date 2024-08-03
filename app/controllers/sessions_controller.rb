@@ -10,4 +10,9 @@ class SessionsController < ApplicationController
       render :new
     end
   end
+
+  def destroy
+    logout
+    redirect_to root_path, notice: 'ログアウトに成功しました。'
+  end
 end
