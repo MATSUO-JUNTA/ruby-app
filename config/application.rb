@@ -21,5 +21,7 @@ module SampleApp
         controller_specs: false, # コントローラーファイルの生成を無効にする
         request_specs: false # コントローラーファイルの生成を無効にする
     end
+    config.time_zone = 'Tokyo'
+    config.i18n.default_locale = :ja
   end
 end
