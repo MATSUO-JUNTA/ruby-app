@@ -13,10 +13,6 @@ class SessionsController < ApplicationController
 
   def destroy
     logout
-<<<<<<< HEAD
     redirect_to root_path, notice: 'ログアウトに成功しました。'
-=======
-    redirect_to root_path, notice: 'ログアウトしました'
->>>>>>> dd6569d (ログアウト途中（ブラウザでのリクエストがGETになってしまっている）)
   end
 end
