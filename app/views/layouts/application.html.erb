@@ -13,12 +13,6 @@
   <body class="bg-gray-100 flex flex-col min-h-screen">
     <%= render partial: "shared/header" %>
 
-    <% flash.each do |message_type, message| %>
-      <div class="flash-message <%= message_type %>"> 
-        <%= message %>
-      </div>
-    <% end %>
-
     <div class="flex-grow container mx-auto mt-8 min-h-[500px]">
       <% flash.each do |key, value| %>
         <div class="alert alert-<%= key %>"><%= value %></div>
