@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
   def index
+<<<<<<< HEAD
     @posts = Post.all.order(created_at: :desc)
   end
 
