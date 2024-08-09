@@ -15,4 +15,3 @@ class SessionsController < ApplicationController
     logout
     redirect_to root_path, notice: 'ログアウトに成功しました。'
   end
-end
