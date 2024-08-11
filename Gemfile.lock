@@ -259,7 +259,11 @@ GEM
     zeitwerk (2.6.16)
 
 PLATFORMS
+<<<<<<< HEAD
   x86_64-darwin-22
+=======
+  aarch64-linux
+>>>>>>> 1ea2695 (投稿の詳細表示)
   x86_64-linux
 
 DEPENDENCIES
