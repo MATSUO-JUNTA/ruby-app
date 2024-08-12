@@ -12,7 +12,11 @@
           Posted by: <%= post.user.email %><br>
           <%= l post.created_at %>
         </div>
-      <% end %>
+        <% if post.user == current_user %>
+          <div class="absolute bottom-4 right-4">
+            <%= link_to '編集', edit_post_path(post), class: 'btn btn-primary' %>
+          </div>
+        <% end %>       
+      </div>
     <% end %>
-  </div>
 </div>

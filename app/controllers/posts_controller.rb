@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_action :require_login, only: [:new, :create]
+  before_action :require_login, only: [:new, :create, :edit, :update]
   def index
     @posts = Post.all.order(created_at: :desc)
   end
@@ -20,6 +20,20 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
+  end
+
+  def edit
+    @post = current_user.posts.find(params[:id])
+  end
+
+  def update
+    @post = current_user.posts.find(params[:id])
+
+    if @post.update(post_params)
+      redirect_to root_path, notice: '更新が成功しました'
+    else
+      render :edit, alert: '更新に失敗しました'
+    end
   end
 
   private
