@@ -24,11 +24,15 @@ class PostsController < ApplicationController
   end
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> c970b9a (投稿の編集機能)
   def edit
   end
 
   def update
     if @post.update(post_params)
+<<<<<<< HEAD
       redirect_to root_path, notice: '更新が成功しました'
     else
       render :edit, alert: '更新に失敗しました'
@@ -37,6 +41,14 @@ class PostsController < ApplicationController
 
 =======
 >>>>>>> 1ea2695 (投稿の詳細表示)
+=======
+      redirect_to posts_path, notice: '投稿が更新されました'
+    else
+      render :edit
+    end
+  end
+
+>>>>>>> c970b9a (投稿の編集機能)
   private
 
   def post_params
@@ -44,6 +56,14 @@ class PostsController < ApplicationController
   end
 
   def set_post
+<<<<<<< HEAD
     @post = current_user.posts.find(params[:id])
+=======
+    @post = Post.find(params[:id])
+  end
+
+  def authorize_user
+    redirect_to posts_path, alert: '権限がありません' unless @post.user == current_user
+>>>>>>> c970b9a (投稿の編集機能)
   end
 end
