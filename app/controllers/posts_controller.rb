@@ -23,6 +23,7 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
   end
 
+<<<<<<< HEAD
   def edit
   end
 
@@ -34,6 +35,8 @@ class PostsController < ApplicationController
     end
   end
 
+=======
+>>>>>>> 1ea2695 (投稿の詳細表示)
   private
 
   def post_params
