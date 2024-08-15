@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
-  before_action :require_login, only: [:new, :create]
+  before_action :require_login, only: [:new, :create, :edit, :update]
+  before_action :set_post, only: [:edit, :update]
   def index
     @posts = Post.all.order(created_at: :desc)
   end
@@ -18,9 +19,28 @@ class PostsController < ApplicationController
     end
   end
 
+  def show
+    @post = Post.find(params[:id])
+  end
+
+  def edit
+  end
+
+  def update
+    if @post.update(post_params)
+      redirect_to root_path, notice: '更新が成功しました'
+    else
+      render :edit, alert: '更新に失敗しました'
+    end
+  end
+
   private
 
   def post_params
     params.require(:post).permit(:title, :body)
+  end
+
+  def set_post
+    @post = current_user.posts.find(params[:id])
   end
 end
