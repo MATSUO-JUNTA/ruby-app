@@ -1,6 +1,7 @@
 class PostsController < ApplicationController
-  before_action :require_login, only: [:new, :create, :edit, :update]
-  before_action :set_post, only: [:edit, :update]
+  before_action :require_login, only: [:new, :create, :edit, :update, :destroy]
+  before_action :set_post, only: [:edit, :update, :destroy]
+  before_action :authorize_post, only: [:destroy]
   def index
     @posts = Post.all.order(created_at: :desc)
   end
@@ -34,6 +35,11 @@ class PostsController < ApplicationController
     end
   end
 
+  def destroy
+    @post.destroy
+    redirect_to root_path, notice: '削除が成功しました'
+  end
+
   private
 
   def post_params
@@ -42,5 +48,11 @@ class PostsController < ApplicationController
 
   def set_post
     @post = current_user.posts.find(params[:id])
+  end
+
+  def authorize_post
+    unless @post.user == current_user
+      redirect_to root_path, notice: '他のユーザーが作成した投稿のため削除できません'
+    end
   end
 end
