@@ -1,12 +1,7 @@
 class PostsController < ApplicationController
   before_action :require_login, only: [:new, :create, :edit, :update, :destroy]
   before_action :set_post, only: [:edit, :update, :destroy]
-<<<<<<< HEAD
   before_action :authorize_post, only: [:destroy]
-=======
-  before_action :authorize_user, only: [:edit, :update, :destroy]
-
->>>>>>> f1a8a2c (投稿の削除機能)
   def index
     @posts = Post.all.order(created_at: :desc)
   end
