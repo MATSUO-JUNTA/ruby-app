@@ -2,6 +2,9 @@
   <div class="card bg-white shadow-xl rounded-3xl p-8">
     <h1 class="text-3xl font-bold mb-6 text-center text-blue-600">Profile</h1>
     <div class="prose lg:prose-xl mb-6 text-lg">
+      <% if current_user.avatar.present? %>
+        <%= image_tag @user.avatar.url, alt: "Avatar", class: "w-24 h-24 rounded-full bg-gray-200 mr-4" %>
+      <% end %>
       <p>Email: <%= current_user.email %></p>
       <p>Registered at: <%= l current_user.created_at %></p>
     </div>
