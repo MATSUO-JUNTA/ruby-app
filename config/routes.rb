@@ -4,5 +4,6 @@ Rails.application.routes.draw do
   resources :sessions, only: [:new, :create]
   resources :posts, only: [:new, :create, :edit, :show, :update, :destroy]
   resources :relationships, only: [:create, :destroy]
+  resources :likes, only: [:create, :destroy]
   delete 'logout', to: 'sessions#destroy'
 end
