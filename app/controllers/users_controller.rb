@@ -43,6 +43,18 @@ class UsersController < ApplicationController
     end
   end
 
+  def edit
+    @user = current_user
+  end
+
+  def update
+    if @user.update(user_params)
+      redirect_to @user, notice: 'プロフィールが更新されました'
+    else
+      render :edit
+    end
+  end
+
   private
   def set_user
     @user = User.find(params[:id])
