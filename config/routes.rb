@@ -8,4 +8,5 @@ Rails.application.routes.draw do
   resources :relationships, only: [:create, :destroy]
   resources :likes, only: [:create, :destroy]
   delete 'logout', to: 'sessions#destroy'
+  get 'search', to: 'posts#search'
 end

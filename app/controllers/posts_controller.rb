@@ -41,6 +41,20 @@ class PostsController < ApplicationController
     redirect_to root_path, notice: '削除が成功しました'
   end
 
+  def search
+    if params[:search_text].present?
+      @posts = Post.where("title LIKE ? OR body LIKE ?", "%#{params[:search_text]}%", "%#{params[:search_text]}%")
+
+      if @posts.empty?
+        flash[:notice] = "検索ワードは#{params[:search_text]}はヒットしませんでした"
+      end
+    else
+      @posts = Post.all
+    end
+
+    render :index
+  end
+
   private
 
   def post_params
