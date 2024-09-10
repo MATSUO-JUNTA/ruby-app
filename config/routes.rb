@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   end
   resources :relationships, only: [:create, :destroy]
   resources :likes, only: [:create, :destroy]
+  resources :notifications, only: [:index]
   delete 'logout', to: 'sessions#destroy'
   get 'search', to: 'posts#search'
 end

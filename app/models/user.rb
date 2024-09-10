@@ -9,6 +9,7 @@ class User < ApplicationRecord
   has_many :likes, dependent: :destroy
   has_many :likes_posts, through: :likes, source: :post
   has_many :comments, dependent: :destroy
+  has_many :notifications, dependent: :destroy
   
   validates :email, presence: true, uniqueness: true
   validates :password, length: { minimum: 6 }, confirmation: true, if: -> { new_record? || changes[:crypted_password] }
@@ -32,5 +33,13 @@ class User < ApplicationRecord
 
   def followings_count
     followings.count
+  end
+
+  def create_notification(notification_type,notified_by,post)
+    notifications.create(
+      notification_type: notification_type,
+      notified_by: notified_by,
+      post: post
+    )
   end
 end
