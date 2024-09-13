@@ -1,5 +1,5 @@
 class Post < ApplicationRecord
-  before_create :create_notification
+  after_create :create_notification
 
   belongs_to :user
   has_many :likes, dependent: :destroy
