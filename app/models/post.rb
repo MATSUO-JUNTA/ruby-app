@@ -1,4 +1,6 @@
 class Post < ApplicationRecord
+  after_create :create_notification
+
   belongs_to :user
   has_many :likes, dependent: :destroy
   has_many :likes_users, through: :likes, source: :user
@@ -10,4 +12,8 @@ class Post < ApplicationRecord
 
   validates :title, presence: true
   validates :body,  presence: true
+
+  def create_notification
+    user.create_notification('post',user,self)
+  end
 end
